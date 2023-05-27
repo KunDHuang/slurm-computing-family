@@ -1,27 +1,8 @@
-# Title: Clean and Filter Sequencing Reads ==> ***preprocessing_reads_trlesker.sh***
+#!/bin/bash
 
-This script will clean and filter the sequencing reads from Illumina platform before further downstream analyses.<br>
-
-The parameters in the script can be edited based on `project requirements`, `Output directory`, and `FastQ directory`. <br>
-
-The script below is a template of the `preprocessing_reads_trlesker` <br>
-
-**Output**
-- Filtered and cleaned `FastQ` files
-- `Log files` for each sample processed 
-
-## Requirement
-_________________________________________
-- **[BBDuk](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/bbmap-guide/)** 
-- **[BBMap](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/bbmap-guide/)**
-
-
-## SLURM parameter
-_________________________________________
-
-``` json
-#SBATCH --job-name=Donor5
-#SBATCH --array=1-20%4 
+##########Configure SLURM parameters##########
+#SBATCH --job-name=preprocessing_metagenomic_reads
+#SBATCH --array=1 
 #SBATCH --ntasks=16
 #SBATCH --partition=cpu
 #SBATCH --output /vol/cluster-data/khuang/slurm_stdout_logs/%x_%j.out
@@ -29,54 +10,26 @@ _________________________________________
 #SBATCH --clusters=bioinf
 #SBATCH --mem=88g
 #SBATCH --time=2:00:00
-```
+##########Configure SLURM parameters##########
 
-| Component | Description  |
-|:----    |:----    |
-| --job-name | Job name    |
-| --array | Number of array job (i.e., `#SBATCH --array=1-20%4` ==> we submit an array job with 20 tasks and 4 groups. %4 means maximum number of simultaneous tasks is limited to 4.)|
-| --ntasks |    Number of tasks to be executed in parallel    |
-| --partition |    Where the job to be executed (CPU or GPU)    |
-| --output |    Location for standard output (stdout) log, *slurm report*, of the job    |
-| --error |    Location for standard error (stderr) log, *slurm report*, of the job     |
-| --clusters |    Harware cluster name for job execution   |
-| --mem |    The amount of memory required for each task    |
-| --time |    The maximum time limit for the job to complete |
-
-**Note:** 
-- `--array` and `--ntask` should be fitted to the number of sample to be processed.
-- `--time` should be fitted to the time usage of the tools.
-
-## Compiling
-_________________________________________
-
-``` bash
+##########Configure tool parameters##########
 usedCores=16
 WorkingDir=/vol/projects/khuang/downstream_analysis/small_bioinf_assistance/caroline_Donor5_microbiome_analysis/filteredReads
 RefDir=/vol/projects/trlesker/filtering/ref-human-mask
 FileListR1=/vol/projects/khuang/downstream_analysis/small_bioinf_assistance/caroline_Donor5_microbiome_analysis/FileListRawR1.txt
 FileListR2=/vol/projects/khuang/downstream_analysis/small_bioinf_assistance/caroline_Donor5_microbiome_analysis/FileListRawR2.txt
 FileListNames=/vol/projects/khuang/downstream_analysis/small_bioinf_assistance/caroline_Donor5_microbiome_analysis/FileListRawNames.txt
-```
+##########Configure SLURM parameters##########
 
-| Component | Description  |
-|:----    |:----    |
-| usedCores | Number of thread to be used in `bbduk and bbmap`    |
-| WorkingDir | The output directory for **processed read** deposition|
-| RefDir |    `bbmap` indexed reference location |
-| FileListR1 |    FastQ R1 path    |
-| FileListR2 |    FastQ R2 path    |
-| FileListNames |    List of samples     |
 
-## Running
-_________________________________________
-
-``` bash
+##########Executive codes and DON'T CHANGE ANYTHING##########
 echo "Job" ${SLURM_ARRAY_TASK_ID} "start at: "`date`
 echo "Running on host: "`hostname`.
 echo "With Path: "$PATH
 echo "In directory: "`pwd`
 echo "go to workdir"
+echo "create directory: "${WorkingDir}
+mkdir -p ${WorkingDir} 
 cd ${WorkingDir}
 echo "Now in directory: "`pwd`
 
@@ -119,12 +72,4 @@ outu=${SampleName}_cleaned_R1.fastq.gz outu2=${SampleName}_cleaned_R2.fastq.gz >
 
 rm ${SampleName}_trim_R1.fastq.gz ${SampleName}_trim_R2.fastq.gz
 echo "End :"`date`
-```
-The `cleaned FastQ files` will be located in the `WorkingDir`.
-
-_________________________________________
-##### More information 
-1. [Slurm tutorial](https://slurm.schedmd.com/tutorials.html)
-2. [HUMAnN3 User Guide](https://github.com/biobakery/humann)
-
-
+##########Executive codes and DON'T CHANGE ANYTHING##########

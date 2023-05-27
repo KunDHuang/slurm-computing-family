@@ -1,0 +1,6 @@
+/vol/data/gmak/runs/analyzed/novaseq/191113_A00278_0097_AHFNG2DRXX/HZI_MIKI/KHK11_S19_R2_001.fastq.gz
+/vol/data/gmak/runs/analyzed/novaseq/191113_A00278_0097_AHFNG2DRXX/HZI_MIKI/KHK16_S20_R2_001.fastq.gz
+/vol/data/gmak/runs/analyzed/novaseq/191113_A00278_0097_AHFNG2DRXX/HZI_MIKI/KHK19_S21_R2_001.fastq.gz
+/vol/data/gmak/runs/analyzed/novaseq/191113_A00278_0097_AHFNG2DRXX/HZI_MIKI/KHK1_S14_R2_001.fastq.gz
+/vol/data/gmak/runs/analyzed/novaseq/191113_A00278_0097_AHFNG2DRXX/HZI_MIKI/KHK24_S22_R2_001.fastq.gz
+/vol/data/gmak/runs/analyzed/novaseq/191113_A00278_0097_AHFNG2DRXX/HZI_MIKI/KHK25_S23_R2_001.fastq.gz

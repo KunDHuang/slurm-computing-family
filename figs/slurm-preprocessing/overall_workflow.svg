@@ -28,12 +28,12 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.2189362"
-     inkscape:cx="426.1913"
-     inkscape:cy="549.65962"
-     inkscape:window-width="2444"
-     inkscape:window-height="1772"
-     inkscape:window-x="2319"
-     inkscape:window-y="257"
+     inkscape:cx="593.96055"
+     inkscape:cy="274.41962"
+     inkscape:window-width="1674"
+     inkscape:window-height="1051"
+     inkscape:window-x="51"
+     inkscape:window-y="1000"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
@@ -111,7 +111,7 @@
        id="rect234-75"
        width="76.529358"
        height="7.286974"
-       x="48.993782"
+       x="66.456299"
        y="23.667658"
        ry="1.600926" />
     <rect
@@ -132,7 +132,7 @@
          id="tspan2625"
          style="fill:#ffffff;fill-opacity:1;stroke-width:0.5"
          x="13.658105"
-         y="29.018539">Step 1. Open <tspan
+         y="29.018539">Step 1. Open &amp; Edit <tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:Menlo;-inkscape-font-specification:'Menlo, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
    id="tspan5271">preprocessing_reads.sh</tspan> </tspan></text>
     <text
