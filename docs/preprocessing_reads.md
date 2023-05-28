@@ -18,15 +18,16 @@ NOTE: *You can skip environment preparation if you are working on HZI servers.*
 
 
 ## Steps to follow (around 1-hour learning journey)
+First of first, please copy scripts `preprocessing_reads.sh` and `reads_stats.sh` to your desired folder.
 
 ### Step 1. Open & Edit `preprocessing_reads.sh`
 For launching jobs on SLURM or other cluster-structured HPC, we config parameters inside the script for the merit of keeping parameter settings recorded. Therefore, we still know what parameters we used after many days, if not months, when the computation is completed. Here, we recommend two common editors for configuring the script:
 * [VIM](https://www.vim.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)   
 
-Only sections `Configure SLURM parameters` and `Configure tool parameters` should be configured and other codes should remain unchanged. Step-by-Step configuration will be explained at length in `Step 2.` and `Step 3.`.
+Only sections `Configure SLURM parameters` and `Configure tool parameters` should be configured and other codes should remain unchanged. Step-by-Step configuration will be explained at length in [Step 2](#step-2-allocate-appropriate-computational-sources) and [Step 3](#step-3-set-parameters-for-the-computational-tool).
 ### Step 2. Allocate appropriate computational sources
-To ensure that appropriate computational sources (enough but not too much) will be used for computing your samples, Please focus on section `Configuration SLURM parameters` as elaborated below.
+To ensure that appropriate computational sources (enough but not too much) will be used for computing your samples, please focus on section `Configuration SLURM parameters` as elaborated below.
 
 `Configuration SLURM parameters` section looks like:
 ```
@@ -49,15 +50,15 @@ To ensure that appropriate computational sources (enough but not too much) will 
 | `--array` | Number of samples submitted to the array job; e.g., `--array=1-6%2` -- we submit a total of 6 samples but only 2 samples were computed in parallel each time instead of 6 all together.|
 | `--ntasks` |    Number of CPUs for each sample; e.g., `--ntasks=4` -- 4 CPUs were allocated to each sample (8 CPUs will be used simultaneously if 2 samples were computed in parallel)    |
 | `--partition` |    Where the job to be executed (CPU or GPU); [CPU] by default     |
-| `--output` |    Location for standard output (stdout) log, *slurm report*, of the job; It is suggested to redirect the logs to a stable path, e.g., `/vol/cluster-data/khuang/slurm_stdout_logs/` where user `khuang` stores his logs. |
-| `--error` |    Location for standard error (stderr) log, *slurm report*, of the job; it is suggested to redirect the logs to a stable path, e.g., `/vol/cluster-data/khuang/slurm_stdout_logs/` where user `khuang` stores his logs. |
-| `--clusters` |    Harware cluster name for job execution; [bioinf] by default  |
+| `--output` |    Location for standard output (stdout) log, *slurm report*, of the job; It is suggested to redirect the logs to a stable path, e.g., `/vol/cluster-data/khuang/slurm_stdout_logs/` where user `khuang` stores his output logs. |
+| `--error` |    Location for standard error (stderr) log, *slurm report*, of the job; it is suggested to redirect the logs to a stable path, e.g., `/vol/cluster-data/khuang/slurm_stderr_logs/` where user `khuang` stores his error logs. |
+| `--clusters` |    Hardware cluster name for job execution; [bioinf] by default  |
 | `--mem` |    The total amount of memory allocated for simultaneouly-computed samples; e.g. `88g` - 88 Gb memory will be used    |
 | `--time` |    The maximum time limit for the job to complete |
 
 
 **Note:** 
-- `--array` and `--ntask` should be fitted to the number of sample to be processed.
+- `--array` and `--ntask` should be fitted to the number of samples to be processed.
 - `--time` should be fitted to the time usage of the tools.
 
 An example configuration:
@@ -68,7 +69,7 @@ An example configuration:
 #SBATCH --ntasks=10 
 #SBATCH --partition=cpu # fixed parameter
 #SBATCH --output /vol/cluster-data/khuang/slurm_stdout_logs/%x_%j.out
-#SBATCH --error /vol/cluster-data/khuang/slurm_stdout_logs/%x_%j.err
+#SBATCH --error /vol/cluster-data/khuang/slurm_stderr_logs/%x_%j.err
 #SBATCH --clusters=bioinf # fixed parameter
 #SBATCH --mem=88g
 #SBATCH --time=2:00:00 
@@ -80,13 +81,13 @@ Code interpretation:
 * `--ntasks=10`: 10 CPUs will be used for each sample. Of note, not for six samples.
 * `--output /vol/cluster-data/khuang/slurm_stdout_logs/%x_%j.out`: User `khuang` used path `/vol/cluster-data/khuang/slurm_stdout_logs` for storing output logs. As for `%x_%j.out`, it is a naming pattern for output file -- `x` and `y` are for constructing array job running IDs and `.out` is the suffix, e.g., `my_first_six_samples_2283.aa_973282.out`.
 * `--error`: same as `--output`.
-* `--mem=88g`: 88 Gb memory will be requested for computing 2 samples in paralell.
+* `--mem=88g`: 88 Gb memory will be requested for computing 2 samples in parallel.
 * `--time=2:00:00`: 2 hours are set as wall time for completing computation for each sample. 
 
 To change more SLURM parameters we suggest you to visit [Slurm tutorial](https://slurm.schedmd.com/tutorials.html) or [HZI HPC architecture](https://bioinfhead01.helmholtz-hzi.de/docs/index.html#).
 
 ### Step 3. Set parameters for the computational tool
-Having allocated appropriate computational sources, we now need to config parameters to run the computational tool which has been mounted on the SLURM in the section of `Configure tool parameters`.
+Having allocated appropriate computational sources, we now need to config parameters to run the computational tool which has been mounted on the SLURM editing the section of `Configure tool parameters`.
 
 ```
 ##########Configure tool parameters##########
@@ -176,15 +177,15 @@ This file should be empty if no errors occured.
 ### Step 6. Statistics analysis for preprocessed reads
 To perform basic stats for preprocessed reads, including the number of reads, the number of bases and averaged read length, we can use script `reads_stats.sh`. 
 
-Please revisit `Step 2.` to learn how to allocate computational sources.
+Please revisit [Step 2](#step-2-allocate-appropriate-computational-sources) to learn how to allocate computational sources.
 Here, no need to configure parameters for computational tool, so we just launch the script:
 ```
 sbatch reads_stats.sh <file_list_names> <preprocessed_reads_folder> <output_folder>
 ```
 
-* `<file_list_names>`: The same file used in `FileListNames` in `Step 3.`.
-* `<preprocessed_reads_foler>`: The folder containing the preprocessed reads, which should be the same folder specified for `WorkingDir` in `Step 3.`. Note: using absolute path.
-* `<output_folder>`: Specify the folder for holding output stats.
+* `<file_list_names>`: The same file used in `FileListNames` in [Step 3](#step-3-set-parameters-for-the-computational-tool).
+* `<preprocessed_reads_foler>`: The folder containing the preprocessed reads, which should be the same folder specified for `WorkingDir` in [Step 3](#step-3-set-parameters-for-the-computational-tool). Note: using absolute path.
+* `<output_folder>`: Specify the folder for holding output stats. Note: using absolute path.
 
 The output looks like:
 
