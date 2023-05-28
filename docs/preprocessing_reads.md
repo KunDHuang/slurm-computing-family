@@ -1,4 +1,4 @@
-# Preprocessing metagenomic reads with `preprocessing_reads.sh`
+# Preprocessing metagenomic reads
 
 !["Title"](../figs/slurm-preprocessing/overall_workflow.png)
 
