@@ -1,0 +1,21 @@
+#mpa_vJan21_CHOCOPhlAnSGB_202103				
+#/vol/projects/khuang/anaconda3/envs/metaphlan-4beta/bin/metaphlan --nproc 10 --input_type fastq --index mpa_vJan21_CHOCOPhlAnSGB_202103 --force -t rel_ab_w_read_stats --sgb --bowtie2out /vol/projects/psivapor/projects/metaphlan/metaphlan_out/n2/metaphlan-4.beta.2_vJan21_CHOCOPhlAnSGB_202103_read_stats/Ext_86_JH277/Ext_86_JH277.bowtie2.bz2 --samout /vol/projects/psivapor/projects/metaphlan/metaphlan_out/n2/metaphlan-4.beta.2_vJan21_CHOCOPhlAnSGB_202103_read_stats/Ext_86_JH277/Ext_86_JH277.sam.bz2 -o /vol/projects/psivapor/projects/metaphlan/metaphlan_out/n2/metaphlan-4.beta.2_vJan21_CHOCOPhlAnSGB_202103_read_stats/Ext_86_JH277/Ext_86_JH277_profile.tsv				
+#SampleID	Metaphlan_Analysis			
+#estimated_reads_mapped_to_known_clades:87806998				
+#clade_name	clade_taxid	relative_abundance	coverage	estimated_number_of_reads_from_the_clade
+k__Bacteria	2	100	36.4395	87806998
+k__Bacteria|p__Firmicutes	2|1239	76.26056	27.78897	62528000
+k__Bacteria|p__Bacteroidetes	2|976	13.75659	5.01283	17079791
+k__Bacteria|p__Proteobacteria	2|1224	5.90287	2.15098	4151668
+k__Bacteria|p__Verrucomicrobia	2|74201	2.58777	0.94297	2812264
+k__Bacteria|p__Actinobacteria	2|201174	1.2338	0.44959	944168
+k__Bacteria|p__Lentisphaerae	2|256845	0.14411	0.05251	212089
+k__Bacteria|p__Tenericutes	2|544448	0.0792	0.02886	55666
+k__Bacteria|p__Candidatus_Melainabacteria	2|1798710	0.03303	0.01204	22858
+k__Bacteria|p__Candidatus_Saccharibacteria	2|95818	0.00207	0.00075	494
+k__Bacteria|p__Firmicutes|c__Clostridia	2|1239|186801	68.38842	24.9204	58391680
+k__Bacteria|p__Bacteroidetes|c__Bacteroidia	2|976|200643	13.7449	5.00857	17071296
+k__Bacteria|p__Firmicutes|c__Bacilli	2|1239|91061	6.17329	2.24952	2582490
+k__Bacteria|p__Proteobacteria|c__Alphaproteobacteria	2|1224|28211	4.52098	1.64742	2871094
+k__Bacteria|p__Verrucomicrobia|c__Verrucomicrobiae	2|74201|203494	2.55363	0.93053	2786743
+k__Bacteria|p__Proteobacteria|c__Betaproteobacteria	2|1224|28216	1.08819	0.39653	894454

@@ -1,199 +1,99 @@
-# Title: HUMAaN3 job submission ==> ***run_humann3_arrayjobs_metagenomic***
+# HUMAnN3 -- Gene-level analysis
 
-This script will perform microbiome functional analysis based on `metagenomic datasets` on a Slurm-based high-performance computing (HPC) system.<br>
+!["HUMAnN3"](../figs/slurm-humann/Slurm-family%20humann3.jpg)
 
-The parameters in the script can be edited based on `project requirements`, `Output directory`, and `FastQ directory`. <br>
 
-The script below is a template of the `run_humann3_arrayjobs.sh` <br>
+## Brief description
+This script will perform microbiome functional analysis based on `metagenomic or metatranscriptomic datasets` on a Slurm-based high-performance computing (HPC) system. <br>
 
 **Syntax**
 `run_humann3_arrayjobs.sh
 <FILENAME_LIST.txt>
 <CLEANED_READ_PATH>
-<HUMANN_OUTPUT_PATH>` 
+<HUMANN_OUTPUT_PATH>`  <br>
 
-<br>
+**Warning**: The script expects arguments to be provided in a specific order, and it will pass those arguments internally for processing.
 
+## Steps to follow (around 1-hour learning journey)
+First of first, please copy scripts `run_humann3_arrayjobs.sh` and `run_humann3_per_sample.sh` to your desired folder.
 
-## SLURM parameter
-_________________________________________
+### Step 1. Open & Edit `run_humann3_arrayjobs.sh`
+For launching jobs on SLURM or other cluster-structured HPC, we config parameters inside the script for the merit of keeping parameter settings recorded. Therefore, we still know what parameters we used after many days, if not months, when the computation is completed. Here, we recommend two common editors for configuring the script:
+* [VIM](https://www.vim.org/)
+* [Visual Studio Code](https://code.visualstudio.com/)   
 
-``` json
-#SBATCH --job-name=Humann3_run
-#SBATCH --array=1-4
-#SBATCH --ntasks=25
+Only sections `Configure SLURM parameters` and `Configure tool parameters` should be configured and other codes should remain unchanged. Step-by-Step configuration will be explained at length in [Step 2](#step-2-allocate-appropriate-computational-sources) and [Step 3](#step-3-set-parameters-for-the-computational-tool). <br>
+
+**Note:** Please update the path in line 29 of the `run_humann3_arrayjobs.sh` script to match your specific path for `run_humann3_per_sample.sh`. To locate the line, look for the <span style="color:red;font-weight:bold;">line 29</span> within the script file.
+
+### Step 2. Allocate appropriate computational sources
+To ensure that appropriate computational sources (enough but not too much) will be used for computing your samples, please focus on section `Configuration SLURM parameters` as described in [preprocessing reads](./preprocessing_reads.md) <br>
+
+#### Example parameter setting
+``` css
+##########Configure SLURM parameters##########
+#SBATCH --job-name=metaphlan4
+#SBATCH --array=1-265
+#SBATCH --ntasks=10
+#SBATCH --ntasks-per-core=20
 #SBATCH --partition=cpu
-#SBATCH --output <stdout_path>/%x_%j.out
-#SBATCH --error <stderr_path>/%x_%j.err
+#SBATCH --output /vol/projects/names/log/%x_%j.out
+#SBATCH --error /vol/projects/names/log/%x_%j.err
 #SBATCH --cluster=bioinf
-#SBATCH --mem=300G
-#SBATCH --time=10-00:00:00
+#SBATCH --mem=64g
+#SBATCH --time=10:00:00
+##########Configure SLURM parameters##########
 ```
+Code interpretation:
+* `--job-name=metaphlan4`: The prefix of output and error logs will be *metaphlan4*.
+* `--array=1-265`: 265 samples are submitted together and queued. 
+* `--ntasks=10`: 10 samples will be computed simultaneously, if the resource is sufficient.
+* `--ntasks-per-core=20`: 20 CPUs will be used for each sample.
+* `--output /vol/projects/names/log/%x_%j.out`: User `names` used path `/vol/projects/names/log/` for storing output logs. As for `%x_%j.out`, it is a naming pattern for output file -- `x` and `j` are for constructing array job running IDs and `.out` is the suffix.
+* `--error`: same as `--output`.
+* `--mem=64`: 64 Gb memory will be requested for computing 10 samples in parallel.
+* `--time=10:00:00`: 10 hours are set as wall time for completing computation for each sample. 
 
-| Component | Description  |
-|:----    |:----    |
-| --job-name | Job name    |
-| --array | Number of array job (i.e., `#SBATCH --array=1-20` ==> we submit an array job with 20 tasks and 4 groups.)|
-| --ntasks |    Number of tasks to be executed in parallel    |
-| --partition |    Where the job to be executed (CPU or GPU)    |
-| --output |    Location for standard output (stdout) log, *slurm report*, of the job    |
-| --error |    Location for standard error (stderr) log, *slurm report*, of the job     |
-| --clusters |    Harware cluster name for job execution   |
-| --mem |    The amount of memory required for each task    |
-| --time |    The maximum time limit for the job to complete |
-<br>
+To change more SLURM parameters we suggest you to visit [Slurm tutorial](https://slurm.schedmd.com/tutorials.html) or [HZI HPC architecture](https://bioinfhead01.helmholtz-hzi.de/docs/index.html#).
 
-## Compiling: `run_humann3_arrayjobs.sh`
-_________________________________________
+<span style="color:#FF5733;font-weight:bold;"> Note: In some cases, the wall-time limit may be reached before the sample processing on the node is complete. As a result, only intermediate temporary files will be retained in the output. It is important to note that increasing the `number of CPUs per task` in Slurm can potentially expedite the running time of HUMAnN3.</span>
 
-```bash
-if [ ! -z "$1" ]
-then
-    SAMPLE_LIST=$1
-fi
-if [ ! -z "$2" ]
-then
-    PR=$2 # a path to cleaned reads, for example, /vol/projects/MIKI/Project-2022-RheumaVor/filteredReads/
-fi
-if [ ! -z "$3" ]
-then
-    PO=$3 # a path to outputs, for example, /vol/projects/khuang/projects/rheumavor/
-fi
+### Step 3. Execute the script
 
-
-INPUT_FILENAME=$(awk "NR==${SLURM_ARRAY_TASK_ID}" ${SAMPLE_LIST})
-
-/vol/projects/khuang/repos/slurm-humann3/run_humann3_per_sample.sh ${INPUT_FILENAME} ${PR} ${PO}
+```java
+sbatch --qos long /vol/projects/user/script/humann3/run_humann3_arrayjobs.sh \
+/vol/projects/user/reads/FileListRawNames.txt \
+/vol/projects/user/reads/filteredRead/ \
+/vol/projects/user/reads/Humann3_out/
 ```
-<br>
+##### Please take a look for [FileListRawNames.txt](../demo_data/demo_file/FileListRawNames.txt)
 
-The script will take 4 arguments including `{INPUT_FILENAME}, ${PR}, and ${PO}` and pass to `run_humann3_per_sample_metatrans.sh`.
-1. `SAMPLE_LIST`: A file containing a list of sample identifiers, one per line.
-2. `PR`: Path to the directory containing cleaned reads.
-3. `PO`: Path to the directory where the outputs will be stored.
+### Step 4. Check outputs
+Once the HUMAnN3 is completed, in the `WorkingDir` 3 main output files and 15 intermediate temp output files will be generated:
 
-## Compiling: `run_humann3_per_sample.sh`
-_________________________________________
+**3 main output files:**
+* `SampleID_genefamilies.tsv`
+* `SampleID_pathabundance.tsv`
+* `SampleID_pathcoverage.tsv`
 
-```bash
-#!/bin/bash
+**Example for HUMAnN [3 main output files](../demo_data/humann_out/)** <br>
 
-if [ ! -z "$1" ]
-then
-    s=$1 # an identifier for a sample
-fi
-if [ ! -z "$2" ]
-then
-    pr=$2 # a path to cleaned reads, for example, /vol/projects/MIKI/Project-2022-RheumaVor/filteredReads/
-fi
-if [ ! -z "$3" ]
-then
-    po=$3 # a path to outputs, for example, /vol/projects/khuang/projects/rheumavor/
-fi
-
-unset PYTHONPATH
-. /vol/projects/khuang/anaconda3/etc/profile.d/conda.sh
-conda activate humann3
-export PATH=/vol/biotools/bin:$PATH
-
-ps=${po}humann3/${s}
-mkdir -p ${ps}
-humann_ipt=${ps}/${s}.fastq
-zcat ${pr}${s}*fastq.gz > ${ps}/${s}.fastq
-
-/vol/projects/khuang/anaconda3/envs/humann3/bin/humann --input ${humann_ipt} --threads 30 --memory-use maximum --output ${ps}
-
-rm $humann_ipt
-```
-<br>
-
-From the passed agruments, the script will process as steps below:
-
-1. The script first checks if the provided command-line arguments are not empty and assigns them to appropriate variables:
-- `s`: An identifier for a sample.
-- `pr`: A path to the directory containing cleaned reads in `FastQ.gz` format.
-- `po`: A path to the directory where the outputs will be stored.
-
-2. The script then unsets the `PYTHONPATH` variable and activates the `humann3 conda environment`. 
-<br>
-3. The script adds the `/vol/biotools/bin` directory to the PATH environment variable to make sure the required bioinformatics tools are available.
-<br>
-4. The script creates the output directory for the current sample by combining the output path `(po)` and the sample identifier `(s)`, and stores it in the `ps` variable.
-<br>
-5. The script concatenates all the `FastQ.gz` files related to the sample identifier `(s)` found in the `pr` directory and writes the combined data into a single `FastQ` file in the sample's output directory `(ps)` stored as `humann_ipt`.
-<br>
-6. The script runs the `HUMAnN3` with the following options:
-- `--input`: Specifies the input `FastQ` file in `(humann_ipt)`.
-- `--threads`: Specifies the number of threads to be used `(30 in this case)`.
-- `--memory-use`: Specifies the memory usage strategy `(maximum in this case)`.
-- `--output`: Specifies the output directory `(ps)`.
-<br>
-7. Finally, the script removes the `FastQ` file in `humann_ipt` to clean up the temporary data.
-
-## Combination of two scripts
-_________________________________________
-
-This script is a combination of `run_humann3_arrayjobs.sh` and `run_humann3_per_sample.sh` for functional analysis of metagenomic datasets.
-<br>
-The agruments and concepts are the same as separated scripts above.
-
-```bash
-#!/bin/bash
-
-#SBATCH --job-name=Humann3_run
-#SBATCH --array=1-4
-#SBATCH --ntasks=25
-#SBATCH --partition=cpu
-#SBATCH --output <stdout_path>/%x_%j.out
-#SBATCH --error <stderr_path>/%x_%j.err
-#SBATCH --cluster=bioinf
-#SBATCH --mem=300G
-#SBATCH --time=10-00:00:00
-
-if [ ! -z "$1" ]
-then
-    SAMPLE_LIST=$1
-fi
-if [ ! -z "$2" ]
-then
-    PR=$2 # a path to cleaned reads, for example, /vol/projects/MIKI/Project-2022-RheumaVor/filteredReads/
-fi
-if [ ! -z "$3" ]
-then
-    PO=$3 # a path to outputs, for example, /vol/projects/khuang/projects/rheumavor/
-fi
-
-INPUT_FILENAME=$(awk "NR==${SLURM_ARRAY_TASK_ID}" ${SAMPLE_LIST})
-
-# Start of the second script
-if [ ! -z "$INPUT_FILENAME" ]
-then
-    s=$INPUT_FILENAME # an identifier for a sample
-fi
-if [ ! -z "$PR" ]
-then
-    pr=$PR # a path to cleaned reads, for example, /vol/projects/MIKI/Project-2022-RheumaVor/filteredReads/
-fi
-if [ ! -z "$PO" ]
-then
-    po=$PO # a path to outputs, for example, /vol/projects/khuang/projects/rheumavor/
-fi
-
-unset PYTHONPATH
-. /vol/projects/khuang/anaconda3/etc/profile.d/conda.sh
-conda activate humann3
-export PATH=/vol/biotools/bin:$PATH
-
-ps=${po}humann3/${s}
-mkdir -p ${ps}
-humann_ipt=${ps}/${s}.fastq
-zcat ${pr}${s}*fastq.gz > ${ps}/${s}.fastq
-
-/vol/projects/khuang/anaconda3/envs/humann3/bin/humann --input ${humann_ipt} --threads 30 --memory-use maximum --output ${ps}
-
-rm $humann_ipt
-
-```
+**15 intermediate temp output files**
+* `SampleID_bowtie2_aligned.sam `     
+* `SampleID_bowtie2_unaligned.fa`
+* `SampleID_bowtie2_aligned.tsv`      
+* `SampleID_custom_chocophlan_database.ffn`
+* `SampleID_bowtie2_index.1.bt2`      
+* `SampleID_diamond_aligned.tsv`
+* `SampleID_bowtie2_index.2.bt2`      
+* `SampleID_diamond_unaligned.fa`
+* `SampleID_bowtie2_index.3.bt2`      
+* `SampleID.log`
+* `SampleID_bowtie2_index.4.bt2`      
+* `SampleID_metaphlan_bowtie2.txt`
+* `SampleID_bowtie2_index.rev.1.bt2`  
+* `SampleID_metaphlan_bugs_list.tsv`
+* `SampleID_bowtie2_index.rev.2.bt2`
 
 _________________________________________
 ##### More information 

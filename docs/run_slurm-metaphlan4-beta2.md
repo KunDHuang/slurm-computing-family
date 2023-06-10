@@ -63,19 +63,17 @@ sbatch --qos long /vol/projects/user/script/slurm-metaphlan4-beta2/run_mpa4_arra
 /vol/projects/user/metaphlan/filteredReads/CleanedRead/ \
 /vol/projects/user/metaphlan/metaphlan_out/
 ```
-<br>
 
-The script will take 4 arguments including `{INPUT_FILENAME}, ${PR}, and ${PO}` and pass to `run_mpa4_per_sample_for_array_jobs.sh`.
-1. `SAMPLE_LIST`: A file containing a list of sample identifiers, one per line.
-2. `PR`: Path to the directory containing cleaned reads.
-3. `PO`: Path to the directory where the outputs will be stored.
+**Please take a look for [FileListRawNames.txt](../demo_data/demo_file/FileListRawNames.txt)**
 
 ### Step 4. Check outputs
 Once the MetaPhlAn4 is completed, in the `WorkingDir` 3 not-empty output files will be generated:
 
-* `EG_p2.bowtie2.bz2`
-* `EG_p2_profile.tsv`
-* `EG_p2.sam.bz2`
+* `Sample_ID.bowtie2.bz2`
+* `Sample_ID_profile.tsv`
+* `Sample_ID.sam.bz2`
+
+**Example for MetaPhlAn4 microbiome profiling: [metaphlan_profile.tsv](../demo_data/metaphlan_out/metaphlan_profile.tsv)**
 _________________________________________
 ##### More information 
 1. [MetaPhlAn User Guide](https://github.com/biobakery/MetaPhlAn)
