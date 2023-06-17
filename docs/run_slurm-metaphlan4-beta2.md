@@ -1,14 +1,15 @@
-# MetaPhlAn -- Taxonomic-level analysis
+# MetaPhlAn -- Species-level taxonomic analysis
 !["Metaphlan4"](../figs/slurm-metaphlan/Slurm-family%20metaphlan.png)
 
 ## Brief description
-This script will perform microbiome taxonomic analysis based on `metagenomic datasets` on a Slurm-based high-performance computing (HPC) system.<br>
+This script will perform microbiome taxonomic analysis based on metagenomic datasets on a Slurm-based high-performance computing (HPC) system.<br>
 
 **Syntax**
-`run_mpa4_array_jobs.sh
-<FILENAME_LIST.txt>
-<CLEANED_READ_PATH>
-<MetaPhlAn_OUTPUT_PATH>` <br>
+``` bash
+run_mpa4_array_jobs.sh <FILENAME_LIST.txt> \
+<CLEANED_READ_PATH> \
+<MetaPhlAn_OUTPUT_PATH>
+```
 
 **Warning**: The script expects arguments to be provided in a specific order, and it will pass those arguments internally for processing.
 
@@ -20,7 +21,7 @@ For launching jobs on SLURM or other cluster-structured HPC, we config parameter
 * [VIM](https://www.vim.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)   
 
-Only sections `Configure SLURM parameters` and `Configure tool parameters` should be configured and other codes should remain unchanged. Step-by-Step configuration will be explained at length in [Step 2](#step-2-allocate-appropriate-computational-sources) and [Step 3](#step-3-set-parameters-for-the-computational-tool). <br>
+Only sections `Configure SLURM parameters` and MetaPhlan parameters in the`run_mpa4_per_sample_for_array_jobs.sh` should be configured and other codes should remain unchanged. Step-by-Step configuration will be explained at length in [Step 2](#step-2-allocate-appropriate-computational-sources) and [Step 3](#step-3-set-parameters-for-the-computational-tool). <br>
 
 **Note:** Please update the path in line 33 of the `run_mpa4_array_jobs.sh` script to match your specific path for `run_mpa4_per_sample_for_array_jobs.sh`. To locate the line, look for the <span style="color:red;font-weight:bold;">line 33</span> within the script file.
 
