@@ -8,15 +8,9 @@ This repo is a family of utilities which are used for running common bioinformat
 git clone git@github.com:KunDHuang/slurm-computing-family.git
 ~~~
 
-### Prepare working environment
-
-* [Preprocessing]()
-* [MetaPhlAn4]()
-* [HUMAnN3]()
-
-NOTE: *You can skip environment preparation if you are working on HZI servers.*
-
 ### Manuals
 * [Preprocessing metagenomic reads on SLURM](./docs/preprocessing_reads.md)
-* [Running MetaPhlAn4 on SLURM](./docs/run_slurm-metaphlan4-beta2.md)
-* [Running HUMAnN3 on SLURM](./docs/run_humann3_metagenomic.md)
+* [Running MetaPhlAn4 on SLURM](./docs/slurm-metaphlan4-beta2.md)
+* [Running HUMAnN3 on SLURM](./docs/slurm-humann3.md)
+
+**NOTE**: `slurm-computing-family` was designed for performing general microbiome analysis on [HZI Bioinf Cluster](https://bioinfhead01.helmholtz-hzi.de/docs/index.html).
