@@ -14,6 +14,10 @@ if [ ! -z "$3" ]
 then
     po=$3 # a path to outputs, for example, /vol/projects/khuang/projects/rheumavor/
 fi
+if [ ! -z "$4" ]
+then
+    ncpu=$4 # the number of CPUs to use
+fi
 
 
 
@@ -23,9 +27,9 @@ unset PYTHONPATH
 conda activate humann3
 export PATH=/vol/biotools/bin:$PATH
 
-ps=${po}humann3/${s}
+ps=${po}/humann3/${s}
 mkdir -p ${ps}
 humann_ipt=${ps}/${s}.fastq
-zcat ${pr}${s}*fastq.gz > ${ps}/${s}.fastq
-/vol/projects/khuang/anaconda3/envs/humann3/bin/humann --input ${humann_ipt} --threads 30 --memory-use maximum --output ${ps}
+zcat ${pr}/${s}*fastq.gz > ${ps}/${s}.fastq
+/vol/projects/khuang/anaconda3/envs/humann3/bin/humann --input ${humann_ipt} --threads ${ncpu} --memory-use maximum --output ${ps}
 rm $humann_ipt

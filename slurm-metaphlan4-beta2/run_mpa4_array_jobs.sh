@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#SBATCH --job-name=mpa4_exp88-freiburg-read_stats
+##########Configure SLURM parameters##########
+#SBATCH --job-name=metaphaln4
 #SBATCH --array=1-265
 #SBATCH --ntasks=10
 #SBATCH --partition=cpu
@@ -9,7 +10,7 @@
 #SBATCH --cluster=bioinf
 #SBATCH --mem=40g
 #SBATCH --time=10:00:00
-
+##########Configure SLURM parameters##########
 
 
 
@@ -30,4 +31,5 @@ fi
 
 
 INPUT_FILENAME=$(awk "NR==${SLURM_ARRAY_TASK_ID}" ${SAMPLE_LIST})
-/vol/projects/khuang/repos/slurm-metaphlan4-beta2/run_mpa4_per_sample_for_array_jobs.sh ${INPUT_FILENAME} ${PR} ${PO}
+${PWD}/run_mpa4_per_sample_for_array_jobs.sh ${INPUT_FILENAME} ${PR} ${PO} ${SLURM_NTASKS} 
+# run_mpa4_per_sample_for_array_jobs.sh is executed in working dir by default so make sure it is placed in an executable path. Otherwise change accordingly. 
