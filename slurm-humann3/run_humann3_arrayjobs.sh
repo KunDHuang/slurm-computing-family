@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#SBATCH --job-name=msm_leftover_humann3_last_batch
+##########Configure SLURM parameters##########
+#SBATCH --job-name=humann3
 #SBATCH --array=1-4
 #SBATCH --ntasks=25
 #SBATCH --partition=cpu
@@ -9,6 +10,7 @@
 #SBATCH --cluster=bioinf
 #SBATCH --mem=300G
 #SBATCH --time=10-00:00:00
+##########Configure SLURM parameters##########
 
 
 if [ ! -z "$1" ]
@@ -26,5 +28,5 @@ fi
 
 
 INPUT_FILENAME=$(awk "NR==${SLURM_ARRAY_TASK_ID}" ${SAMPLE_LIST})
-/vol/projects/khuang/repos/slurm-humann3/run_humann3_per_sample.sh ${INPUT_FILENAME} ${PR} ${PO}
+${PWD}/run_humann3_per_sample.sh ${INPUT_FILENAME} ${PR} ${PO} ${SLURM_NTASKS}
 
