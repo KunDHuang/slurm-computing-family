@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   sodipodi:docname="README_log.svg"
+   inkscape:export-filename="../README_log.jpg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.2222732"
+     inkscape:cx="320.71389"
+     inkscape:cy="333.80425"
+     inkscape:window-width="2429"
+     inkscape:window-height="1314"
+     inkscape:window-x="54"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1964" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.95;fill:#ffffff;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-miterlimit:0"
+       id="rect234"
+       width="160"
+       height="160"
+       x="23.799948"
+       y="24.00292" />
+    <rect
+       style="opacity:0.95;fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-miterlimit:0"
+       id="rect396"
+       width="150"
+       height="150"
+       x="29.399132"
+       y="29.017612" />
+    <path
+       style="opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       d="M 80.032485,28.361111 V 179.13332"
+       id="path520" />
+    <path
+       style="opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       d="M 131.67462,28.409222 V 178.96477"
+       id="path520-5" />
+    <path
+       style="opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       d="M 29.528176,78.801711 H 179.6047"
+       id="path520-5-2" />
+    <path
+       style="opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       d="M 28.632931,132.14848 H 179.44939"
+       id="path520-5-2-8" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       x="30.18491"
+       y="55.645546"
+       id="text2854"><tspan
+         sodipodi:role="line"
+         id="tspan2852"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="30.18491"
+         y="55.645546">Reads Preprocessing</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       x="83.955116"
+       y="55.645546"
+       id="text2854-4"><tspan
+         sodipodi:role="line"
+         id="tspan2852-2"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="83.955116"
+         y="55.645546">Taxonomic Profiling</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       x="135.73875"
+       y="55.645546"
+       id="text2854-4-9"><tspan
+         sodipodi:role="line"
+         id="tspan2852-2-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="135.73875"
+         y="55.645546">Functional Profiling</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       x="84.881813"
+       y="100.40623"
+       id="text2854-4-9-1"><tspan
+         sodipodi:role="line"
+         id="tspan2852-2-1-0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="84.881813"
+         y="100.40623">        Average </tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="84.881813"
+         y="106.57984"
+         id="tspan3730">Nucleotide Identity</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="84.881813"
+         y="112.75345"
+         id="tspan3736">          (ANI)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       x="140.56067"
+       y="103.85838"
+       id="text2854-4-9-1-4"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="140.56067"
+         y="103.85838"
+         id="tspan3736-1">  Pangenome</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="140.56067"
+         y="110.032"
+         id="tspan4094">Reconstruction</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';opacity:0.95;fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none"
+       x="38.026611"
+       y="103.39295"
+       id="text2854-4-9-1-1"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="38.026611"
+         y="103.39295"
+         id="tspan3736-7">Metagenomic </tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Futura;-inkscape-font-specification:'Futura, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0;stroke-dasharray:none"
+         x="38.026611"
+         y="109.56657"
+         id="tspan4026">   Assembly</tspan></text>
+  </g>
+</svg>
