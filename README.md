@@ -9,8 +9,9 @@ git clone git@github.com:KunDHuang/slurm-computing-family.git
 ~~~
 
 ### Manuals
-* [Preprocessing metagenomic reads on SLURM](./docs/preprocessing_reads.md)
-* [Running MetaPhlAn4 on SLURM](./docs/slurm-metaphlan4-beta2.md)
-* [Running HUMAnN3 on SLURM](./docs/slurm-humann3.md)
+* [Preprocessing](./docs/preprocessing_reads.md)
+* [Taxonomic Profiling](./docs/slurm-metaphlan4-beta2.md)
+* [Functional Profiling](./docs/slurm-humann3.md)
+* [Average Nucleotide Identity](./docs/slurm-pyani.md)
 
-**NOTE**: `slurm-computing-family` was designed for performing general microbiome analysis on [HZI Bioinf Cluster](https://bioinfhead01.helmholtz-hzi.de/docs/index.html).
+**NOTE**: The architecture of `slurm-computing-family` was designed for performing general microbiome analysis on [HZI Bioinf Cluster](https://bioinfhead01.helmholtz-hzi.de/docs/index.html).
