@@ -10,7 +10,7 @@ git clone git@github.com:KunDHuang/slurm-computing-family.git
 
 ### Manuals
 * [Preprocessing](./docs/preprocessing_reads.md)
-* [Taxonomic Profiling](./docs/slurm-metaphlan4-beta2.md)
+* [Taxonomic Profiling](./docs/slurm-metaphlan4.md)
 * [Functional Profiling](./docs/slurm-humann3.md)
 * [Average Nucleotide Identity](./docs/slurm-pyani.md)
 
