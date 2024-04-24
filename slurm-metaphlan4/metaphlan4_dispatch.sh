@@ -5,7 +5,8 @@
 ##########################################################################################
 
 VERSION="1.0.1"
-PACKAGE_DIR="/vol/projects/khuang/repos/slurm-computing-family/slurm-metaphlan4"
+PACKAGE_DIR="$(dirname "$(readlink -f "$0")")"
+echo $PACKAGE_DIR
 
 help_page () {
     echo ""
