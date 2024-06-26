@@ -28,8 +28,7 @@ Usage: prokka_dispatch.sh -i [input] -o [output] -n [nproc]
 ## Example input data
 
 1. A FASTA file containing one single genome: `/vol/projects/khuang/repo_demo/slurm-computing-family/prokka_annotation/one_file_demo/ZellerG_2014__CCMD34381688ST-21-0__bin.4.fna`
-2. A folder containing multiple FASTA files, each corresponding to one genome:
-
+2. A folder containing multiple FASTA files, each corresponding to one genome: `/vol/projects/khuang/repo_demo/slurm-computing-family/prokka_annotation/one_folder_demo/genomes_annotate`
 
 ## Example command lines:
 
