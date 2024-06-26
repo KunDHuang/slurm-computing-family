@@ -29,7 +29,7 @@ unset PYTHONPATH
 conda activate prokka-1.14.6
 
 PROKKA=/vol/projects/MIKI/lab_anaconda3/20240201_anaconda3/envs/prokka-1.14.6/bin/prokka
-
+export LC_ALL=C
 if [[ -d ${INPUT} ]]; then
     INPUT_DIR=${INPUT}
     mkdir -p ${OUTPUT}

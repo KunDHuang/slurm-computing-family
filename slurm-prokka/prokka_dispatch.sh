@@ -10,7 +10,7 @@ PACKAGE_DIR="/vol/projects/khuang/repos/slurm-computing-family/slurm-prokka"
 help_page () {
     echo ""
     echo "Pipeline version: v=$VERSION"
-    echo "Usage: prokka_dispatch.sh -i [input] -o [output] -m [method] -n [nproc]"
+    echo "Usage: prokka_dispatch.sh -i [input] -o [output] -n [nproc]"
     echo ""
     echo " -i       A directory of input genome fasta files or a single fasta file."
     echo " -o       A directory for storing output results."
