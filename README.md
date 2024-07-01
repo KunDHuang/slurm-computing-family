@@ -13,7 +13,7 @@ git clone git@github.com:KunDHuang/slurm-computing-family.git
 * [Taxonomic Profiling](./docs/slurm-metaphlan4.md)
 * [Functional Profiling](./docs/slurm-humann3.md)
 * [Average Nucleotide Identity](./docs/slurm-pyani.md)
-* [Prokaryotic genome annotation](./docs/slurm-prokka.md)
-* [Roary Pangenome Reconstruction](./docs/slurm-roary.md)
+* [Prokaryotic Genome Annotation](./docs/slurm-prokka.md)
+* [Core & Pangenome Reconstruction](./docs/slurm-roary.md)
 
 **NOTE**: The architecture of `slurm-computing-family` was designed for performing general microbiome analysis on [HZI Bioinf Cluster](https://bioinfhead01.helmholtz-hzi.de/docs/index.html).

@@ -1,10 +1,10 @@
-# Pangenome Reconstruction for Prokaryotic Genome
+# Core & Pangenome Reconstruction for Prokaryotic Genomes
 
-## Brief Description
-Pangenome reconstruction helps identify core genes within any bacterial group (inter-/intra-species specific) using **GFF files**. This guide details using the computational tool Roary with SLURM clusters to scale up annotation tasks.
+## Brief description
+Core and pangenomes can be used for studying the genomic differences (SNVs and gene gain and loss) between microbial genomes. In this utility, we implement a commonly-used computational approach - Roary - in our slurm computing family in order to scale up core & pangenome reconstruction leveraging SLURM clusters.
 
-## How to Use It?
-The script `roary_dispatch.sh` facilitates the process.
+## How to use it?
+Launch your tasks using `roary_dispatch.sh`.
 
 ~~~Bash
 roary_dispatch.sh -h
@@ -26,18 +26,18 @@ Usage: roary_dispatch.sh -i [input] -o [output] -n [nproc]
 
 ## Example Input Data
 
-1. Directory containing GFF files: `/vol/projects/psivapor/projects/SelfTraning/Test_Slurm_family/Test_Roary_29_06_2024/demo/s__Clostridium_sp_AF15_49_GFF/`
-2. File listing directories with GFF files: `/vol/projects/psivapor/projects/SelfTraning/Test_Slurm_family/Test_Roary_29_06_2024/demo/multi_gff_dir.tsv`
+1. A single directory containing GFF files: `/vol/projects/khuang/repo_demo/slurm-computing-family/roary_demo/single_folder`
+2. Multiple folders of GFF files: `/vol/projects/khuang/repo_demo/slurm-computing-family/roary_demo/multi_folders/multi_gff_dir.tsv`
 
-## Example Command Lines
+## Example command lines
 
-### Using a Directory Containing GFF Files
+### Input is a single directory containing GFF files
 
 ~~~Bash
 # Define input, output, and log directories
-INPUT="/vol/projects/psivapor/projects/SelfTraning/Test_Slurm_family/Test_Roary_29_06_2024/demo/s__Clostridium_sp_AF15_49_GFF/"
-OUTPUT="/vol/projects/psivapor/projects/SelfTraning/Test_Slurm_family/Test_Roary_29_06_2024/single_res/"
-LOG="/vol/projects/psivapor/projects/SelfTraning/Test_Slurm_family/Test_Roary_29_06_2024/logs/"
+INPUT="/vol/projects/khuang/repo_demo/slurm-computing-family/roary_demo/single_folder"
+OUTPUT="/vol/projects/khuang/repo_demo/slurm-computing-family/roary_demo/single_folder_output"
+LOG="/vol/cluster-data/khuang/slurm_logs"
 
 # Print the parameters for verification
 echo "Input directory: ${INPUT}"
@@ -60,13 +60,13 @@ roary_dispatch.sh \
 echo "Roary dispatch complete. Check ${LOG} for log files."
 ~~~
 
-### Using a File Listing Directories with GFF Files
+### Input is multiple folders of GFF files
 
 ~~~Bash
 # Define input, output, and log directories
-INPUT="/vol/projects/psivapor/projects/SelfTraning/Test_Slurm_family/Test_Roary_29_06_2024/demo/multi_gff_dir.tsv"
-OUTPUT="/vol/projects/psivapor/projects/SelfTraning/Test_Slurm_family/Test_Roary_29_06_2024/multi_res/"
-LOG="/vol/projects/psivapor/projects/SelfTraning/Test_Slurm_family/Test_Roary_29_06_2024/logs/"
+INPUT="/vol/projects/khuang/repo_demo/slurm-computing-family/roary_demo/multi_folders/multi_gff_dir.tsv"
+OUTPUT="/vol/projects/khuang/repo_demo/slurm-computing-family/roary_demo/multi_folders_output"
+LOG="/vol/cluster-data/khuang/slurm_logs"
 
 # Print the parameters for verification
 echo "Input directory: ${INPUT}"
