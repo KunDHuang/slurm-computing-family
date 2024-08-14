@@ -27,10 +27,13 @@ if [ ! -z "$3" ]
 then
     PO=$3 # a path to outputs, for example, /vol/projects/khuang/projects/rheumavor/
 fi
+if [ ! -z "$4" ]
+then
+    NCPU=$4 # CPUs use for each execution
+fi
 
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 INPUT_FILENAME=$(awk "NR==${SLURM_ARRAY_TASK_ID}" ${SAMPLE_LIST})
-/vol/projects/khuang/repos/slurm-computing-family/slurm-CAZyDB-mapping/map_reads2CAZyDB_per_sample.sh ${INPUT_FILENAME} ${PR} ${PO} ${SLURM_NTASKS} 
-# run_mpa4_per_sample_for_array_jobs.sh is executed in working dir by default so make sure it is placed in an executable path. Otherwise change accordingly. 
+/vol/projects/psivapor/projects/SelfTraning/Git_repo/slurm-computing-family/slurm-CAZyDB-mapping/map_reads2CAZyDB_per_sample.sh ${INPUT_FILENAME} ${PR} ${PO} ${NCPU} 
